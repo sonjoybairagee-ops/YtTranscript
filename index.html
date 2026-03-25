@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Transcript Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <main class="container">
+        <div class="glass-panel main-panel">
+            <header class="header">
+                <div class="icon-container">
+                    <i class="fa-brands fa-youtube"></i>
+                </div>
+                <h1>YT Transcript Generator</h1>
+                <p>Extract, translate, and summarize YouTube transcripts instantly.</p>
+            </header>
+
+            <div class="input-section">
+                <div class="input-group">
+                    <i class="fa-solid fa-link input-icon"></i>
+                    <input type="url" id="video-url" placeholder="Paste YouTube Video URL here..." autocomplete="off">
+                </div>
+                <button id="get-transcript-btn" class="btn primary-btn">
+                    <span>Get Transcript</span>
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </button>
+            </div>
+
+            <div id="loading-state" class="state-container hidden">
+                <div class="spinner"></div>
+                <p id="loading-text">Fetching transcript...</p>
+            </div>
+
+            <div id="error-state" class="state-container hidden">
+                <i class="fa-solid fa-circle-exclamation error-icon"></i>
+                <p id="error-text">Failed to fetch transcript. Please check the URL and try again.</p>
+            </div>
+
+            <div id="output-section" class="output-section hidden">
+                <div class="actions-toolbar">
+                    <div class="actions-group">
+                        <button id="copy-btn" class="btn icon-btn" title="Copy Text">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="btn-text">Copy</span>
+                        </button>
+                        <button id="download-btn" class="btn icon-btn" title="Download .txt">
+                            <i class="fa-solid fa-download"></i>
+                            <span class="btn-text">Download</span>
+                        </button>
+                    </div>
+                    <div class="actions-group">
+                        <button id="translate-btn" class="btn secondary-btn">
+                            <i class="fa-solid fa-language"></i>
+                            <span class="btn-text">Translate (BN)</span>
+                        </button>
+                        <button id="summary-btn" class="btn secondary-btn highlight">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span class="btn-text">AI Summary & SEO</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="transcript-container">
+                    <div id="transcript-content" class="transcript-content"></div>
+                </div>
+                
+                <div id="ai-results-container" class="ai-results hidden">
+                    <h3>AI Generation Results</h3>
+                    <div id="ai-content"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
