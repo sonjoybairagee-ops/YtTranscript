@@ -69,7 +69,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({ url })
             });
 
-            const data = await response.json();
+            let data;
+            const textResponse = await response.text();
+            
+            try {
+                data = JSON.parse(textResponse);
+            } catch (e) {
+                console.error("Backend Error Response:", textResponse);
+                throw new Error("Server returned an invalid or empty response. Ensure the backend functions are deployed correctly.");
+            }
 
             if (!response.ok) {
                 throw new Error(data.error || 'Failed to fetch transcript');
