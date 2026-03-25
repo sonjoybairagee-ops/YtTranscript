@@ -119,7 +119,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Action Helpers
     copyBtn.addEventListener('click', async () => {
-        if (!currentFullText) return;
+        if (!currentFullText) {
+            alert('Please Get Transcript first!');
+            return;
+        }
         try {
             // Strip html tags just in case
             const parser = new DOMParser();
@@ -137,7 +140,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     downloadBtn.addEventListener('click', () => {
-        if (!currentFullText) return;
+        if (!currentFullText) {
+            alert('Please Get Transcript first!');
+            return;
+        }
         
         let textToDownload = '';
         transcriptContent.querySelectorAll('.transcript-line').forEach(line => {
@@ -157,7 +163,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // AI Integrations
     async function processAI(action) {
-        if (!currentFullText) return;
+        if (!currentFullText) {
+            alert('Please Get Transcript first!');
+            return;
+        }
         
         showLoading(action === 'summary' ? 'Generating AI Summary...' : 'Translating to Bangla...');
         outputSection.classList.add('hidden'); // Hide temporarily
