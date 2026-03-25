@@ -1,6 +1,6 @@
-const { YoutubeTranscript } = require('youtube-transcript');
+import { YoutubeTranscript } from 'youtube-transcript/dist/youtube-transcript.esm.js';
 
-exports.handler = async (event, context) => {
+export const handler = async (event, context) => {
     // Only allow POST
     if (event.httpMethod !== "POST") {
         return { statusCode: 405, body: "Method Not Allowed" };
