@@ -1,12 +1,13 @@
-import { YoutubeTranscript } from 'youtube-transcript/dist/youtube-transcript.esm.js';
-
-export const handler = async (event, context) => {
+exports.handler = async (event, context) => {
     // Only allow POST
     if (event.httpMethod !== "POST") {
         return { statusCode: 405, body: "Method Not Allowed" };
     }
 
     try {
+        const ytModule = await import('youtube-transcript/dist/youtube-transcript.esm.js');
+        const YoutubeTranscript = ytModule.YoutubeTranscript;
+
         const body = JSON.parse(event.body);
         const videoUrl = body.url;
 

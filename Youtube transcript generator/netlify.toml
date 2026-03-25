@@ -3,6 +3,9 @@
   publish = "."
   functions = "netlify/functions"
 
+[functions]
+  external_node_modules = ["youtube-transcript", "@google/generative-ai"]
+
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
